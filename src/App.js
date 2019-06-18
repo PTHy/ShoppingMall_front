@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { Provider } from "mobx-react";
+
+import Stores from './Stores';
+
+import User from './User';
+import Home from './Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Provider stores={Stores}>
+        <BrowserRouter>
+          <header className="App-header">
+
+          </header>
+          <section className='app-body'>
+            <Route exact path='/' component={Home}/>
+            <Route path='/user/:command?/:id?' component={User}/>
+          </section>
+        </BrowserRouter>
+      </Provider>
   );
 }
 

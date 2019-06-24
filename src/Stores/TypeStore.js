@@ -1,0 +1,65 @@
+import {observable, action} from "mobx";
+import axios from 'axios'
+
+class TypeStore {
+    static __instance = null;
+    static getInstance() {
+        if (TypeStore.__instance == null)
+            TypeStore.__instance = new TypeStore();
+        return TypeStore.__instance;
+    }
+
+    constructor() {
+        TypeStore.__instance = this;
+    }
+
+    @observable types = null;
+
+    @action fetchTypes = async () => {
+        try {
+            let response = await axios({
+                url: `http://localhost:8080/api/products/types`,
+                method: 'get',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                timeout: 3000
+            });
+
+            console.log(response);
+
+            this.types = response.status === 200 ? response.data : null;
+            return true;
+        } catch (error) {
+            console.log(error.message);
+
+            return false;
+        }
+    };
+
+    @observable subTypes = null;
+
+    @action fetchSubTypeByType = async (id) => {
+        try {
+            let response = await axios({
+                url: `http://localhost:8080/api/products/types/${id}/sub-types`,
+                method: 'get',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                timeout: 3000
+            });
+
+            console.log(response);
+
+            this.subTypes = response.status === 200 ? response.data : null;
+            return true;
+        } catch (error) {
+            console.log(error.message);
+
+            return false;
+        }
+    }
+}
+
+export default TypeStore.getInstance();

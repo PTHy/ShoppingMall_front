@@ -5,7 +5,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <div className='btn-small'><Link to='/user'>유저</Link></div>
+                
             </div>
         );
     }

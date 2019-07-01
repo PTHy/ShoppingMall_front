@@ -1,0 +1,48 @@
+.category-container {
+  .category-header-container {
+    width: 80vw;
+    height: 40vh;
+    margin-left: 10vw;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .title {
+      position: absolute;
+      top: 27vh;
+      font-size: 40px;
+      font-weight: bold;
+      margin-left: 2vw;
+    }
+
+    .sub-title {
+      position: absolute;
+      font-size: 25px;
+      top: 33vh;
+      margin-left: 2vw;
+    }
+  }
+
+  .menus {
+    width: 80vw;
+    margin-left: 10vw;
+  }
+}
+
+.sub-type-list-container {
+  margin-left: 12vw;
+  .selected {
+    color: white;
+    font-weight: bold;
+    background-color: black;
+  }
+  li {
+    cursor: pointer;
+    background-color: grey;
+    display: inline-block;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    border-radius: 10px;
+  }
+}
